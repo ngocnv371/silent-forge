@@ -1,6 +1,7 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { Item, ItemRarity, Modifier, ModifierInstance, ModifierTier, ModifierType, Weighted } from '../../models/item';
 
-const modifiers: Modifier[] = require('../../../public/assets/mods.json');
+const modifiers: Modifier[] = require('../../data/mods.json');
 
 function getWeightedRandom<T extends Weighted>(items: T[], isEqual: (a: T, b: T) => boolean, quantity: number) {
   function calculateMap() {
@@ -37,6 +38,7 @@ function getWeightedRandom<T extends Weighted>(items: T[], isEqual: (a: T, b: T)
     if (bag.some((i) => isEqual(i, candidate))) {
       continue;
     }
+    bag.push(candidate)
   }
   return bag;
 }
@@ -109,7 +111,7 @@ export function reforge(item: Item): Item {
   newItem.name = createItemName(newItem);
   console.log(`generated name: ${newItem.name}`);
   console.log(`new item`, newItem);
-  return item;
+  return newItem;
 }
 
 export const shortSword: Item = {
@@ -120,3 +122,26 @@ export const shortSword: Item = {
   rarity: ItemRarity.Normal,
   modifiers: [],
 };
+
+interface State {
+  item: Item;
+}
+
+const initialState = {
+  item: shortSword,
+} as State;
+
+const slice = createSlice({
+  name: 'forge',
+  initialState,
+  reducers: {
+    reforgeItem(state) {
+      const newItem = reforge(state.item);
+      state.item = newItem;
+    }
+  },
+});
+
+export const { reforgeItem } = slice.actions;
+
+export default slice.reducer;
