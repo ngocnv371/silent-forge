@@ -38,7 +38,7 @@ function getWeightedRandom<T extends Weighted>(items: T[], isEqual: (a: T, b: T)
     if (bag.some((i) => isEqual(i, candidate))) {
       continue;
     }
-    bag.push(candidate)
+    bag.push(candidate);
   }
   return bag;
 }
@@ -82,14 +82,50 @@ function createItemName(item: Item) {
 
 const isNameEqual = (a: { name: string }, b: { name: string }) => a.name === b.name;
 
+function getMaxNumberOfAffixes(rarity: ItemRarity) {
+  switch (rarity) {
+    case ItemRarity.Normal:
+      return 0;
+    case ItemRarity.Magic:
+      return 2;
+    case ItemRarity.Rare:
+      return 3;
+  }
+  return 3;
+}
+
+// create a number greater than or equal to zero and lesser than 4
+function getRandomNumberOfAffixes(rarity: ItemRarity) {
+  const max = getMaxNumberOfAffixes(rarity);
+  const num = Math.floor(Math.random() * 4);
+  if (num > max) {
+    return max;
+  }
+  return num;
+}
+
+function rollRarity(): ItemRarity {
+  const num = Math.random() * 5;
+  if (num <= 2) {
+    return ItemRarity.Magic;
+  }
+  return ItemRarity.Rare;
+}
+
 export function reforge(item: Item): Item {
   const availablePrefixes = modifiers.filter((m) => m.tiers[0].level <= item.level && m.type === ModifierType.Prefix);
   console.log(`available prefixes: ${availablePrefixes.length}`);
   const availableSuffixes = modifiers.filter((m) => m.tiers[0].level <= item.level && m.type === ModifierType.Suffix);
   console.log(`available suffixes: ${availableSuffixes.length}`);
-  const prefixes = getWeightedRandom(availablePrefixes, isNameEqual, 3);
+  const rarity = rollRarity();
+  console.log(`rarity: ${rarity}`)
+  const maxPrefixes = getRandomNumberOfAffixes(rarity);
+  console.log(`max prefixes: ${maxPrefixes}`);
+  const prefixes = getWeightedRandom(availablePrefixes, isNameEqual, maxPrefixes);
   console.log(`generated prefixes`, prefixes);
-  const suffixes = getWeightedRandom(availableSuffixes, isNameEqual, 3);
+  const maxSuffixes = getRandomNumberOfAffixes(rarity);
+  console.log(`max suffixes: ${maxSuffixes}`);
+  const suffixes = getWeightedRandom(availableSuffixes, isNameEqual, maxSuffixes);
   console.log(`generated suffixes`, suffixes);
   const mods = [...prefixes, ...suffixes];
   const inializedMods: ModifierInstance[] = mods.map((m) => {
@@ -138,7 +174,18 @@ const slice = createSlice({
     reforgeItem(state) {
       const newItem = reforge(state.item);
       state.item = newItem;
-    }
+    },
+    scourgeItem(state) {
+      const newItem = {
+        id: state.item.id,
+        name: state.item.base,
+        base: state.item.base,
+        rarity: ItemRarity.Normal,
+        level: state.item.level,
+        modifiers: [],
+      };
+      state.item = newItem;
+    },
   },
 });
 
