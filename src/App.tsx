@@ -21,7 +21,7 @@ import {
   setupIonicReact,
 } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
-import { flame, flashOutline, personCircleOutline, settings } from 'ionicons/icons';
+import { flame, flashOutline, personCircleOutline, hammer, settings } from 'ionicons/icons';
 
 import { IonReactRouter } from '@ionic/react-router';
 import Setting from './pages/setting';
@@ -29,6 +29,7 @@ import Skills from './pages/skills';
 import Status from './pages/status';
 import Tap from './pages/tap';
 import Zones from './pages/zones';
+import Forge from './pages/forge';
 
 setupIonicReact();
 
@@ -49,6 +50,9 @@ const App: React.FC = () => (
           <Route exact path="/tap">
             <Tap />
           </Route>
+          <Route exact path="/forge">
+            <Forge />
+          </Route>
           <Route exact path="/setting">
             <Setting />
           </Route>
@@ -64,6 +68,10 @@ const App: React.FC = () => (
           <IonTabButton tab="skills" href="/skills">
             <IonIcon icon={flame} />
             <IonLabel>Skills</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="forge" href="/forge">
+            <IonIcon icon={hammer} />
+            <IonLabel>Forge</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tap" href="/tap">
             <IonIcon icon={flashOutline} />

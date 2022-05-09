@@ -8,7 +8,6 @@ import {
   IonPage,
   IonSegment,
   IonSegmentButton,
-  IonToast,
   IonToolbar,
   SegmentChangeEventDetail,
 } from '@ionic/react';
