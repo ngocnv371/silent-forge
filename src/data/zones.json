@@ -1,0 +1,34 @@
+[
+  {
+    "id": "Sarn",
+    "name": "Sarn",
+    "zones": [
+      { "id": 1, "name": "Crematerium", "price": 50 },
+      { "id": 2, "name": "Gateway", "price": 60 },
+      { "id": 3, "name": "Grains Gate", "price": 70 },
+      { "id": 4, "name": "Market", "price": 150 },
+      { "id": 5, "name": "Battle Field", "price": 160 }
+    ]
+  },
+  {
+    "id": "Oriath",
+    "name": "Oriath",
+    "zones": [
+      { "id": 6, "name": "Catheral", "price": 150 },
+      { "id": 7, "name": "City Square", "price": 160 },
+      { "id": 8, "name": "Cannals", "price": 150 },
+      { "id": 9, "name": "Slave Pens", "price": 170 },
+      { "id": 10, "name": "Overseer", "price": 170 }
+    ]
+  },
+  {
+    "id": "Highlands",
+    "name": "Highlands",
+    "zones": [
+      { "id": 11, "name": "Supply Way", "price": 210 },
+      { "id": 12, "name": "Rope", "price": 230 },
+      { "id": 13, "name": "Goat's path", "price": 250 },
+      { "id": 14, "name": "Temple", "price": 270 }
+    ]
+  }
+]
