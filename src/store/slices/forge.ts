@@ -113,33 +113,46 @@ function rollRarity(): ItemRarity {
 }
 
 export function reforge(item: Item): Item {
+  console.groupCollapsed('reforge');
+  const rarity = rollRarity();
+  console.log(`rarity: ${rarity}`);
+
+  console.group('prefix');
   const availablePrefixes = modifiers.filter((m) => m.tiers[0].level <= item.level && m.type === ModifierType.Prefix);
   console.log(`available prefixes: ${availablePrefixes.length}`);
-  const availableSuffixes = modifiers.filter((m) => m.tiers[0].level <= item.level && m.type === ModifierType.Suffix);
-  console.log(`available suffixes: ${availableSuffixes.length}`);
-  const rarity = rollRarity();
-  console.log(`rarity: ${rarity}`)
   const maxPrefixes = getRandomNumberOfAffixes(rarity);
   console.log(`max prefixes: ${maxPrefixes}`);
   const prefixes = getWeightedRandom(availablePrefixes, isNameEqual, maxPrefixes);
   console.log(`generated prefixes`, prefixes);
+  console.groupEnd();
+
+  console.group('suffix');
+  const availableSuffixes = modifiers.filter((m) => m.tiers[0].level <= item.level && m.type === ModifierType.Suffix);
+  console.log(`available suffixes: ${availableSuffixes.length}`);
   const maxSuffixes = getRandomNumberOfAffixes(rarity);
   console.log(`max suffixes: ${maxSuffixes}`);
   const suffixes = getWeightedRandom(availableSuffixes, isNameEqual, maxSuffixes);
   console.log(`generated suffixes`, suffixes);
+  console.groupEnd();
+
   const mods = [...prefixes, ...suffixes];
   const inializedMods: ModifierInstance[] = mods.map((m) => {
     const tiers = getWeightedRandom<ModifierTier>(m.tiers, isNameEqual, 1);
     const tier = tiers[0];
     const magnitudes = rollMagnitudes(tier);
     return {
-      ...m,
+      type: m.type,
       level: tier.level,
       name: tier.name,
+      description: m.description,
       magnitudes,
     };
   });
-  console.log(`initialized mods`, inializedMods);
+
+  console.group('initialized mods');
+  console.table(inializedMods);
+  console.groupEnd();
+
   const newItem = {
     ...item,
     modifiers: inializedMods,
@@ -147,6 +160,8 @@ export function reforge(item: Item): Item {
   newItem.name = createItemName(newItem);
   console.log(`generated name: ${newItem.name}`);
   console.log(`new item`, newItem);
+  console.groupEnd();
+
   return newItem;
 }
 
