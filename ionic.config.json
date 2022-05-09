@@ -1,0 +1,7 @@
+{
+  "name": "Silent Forge",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
