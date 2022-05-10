@@ -3,32 +3,32 @@
     "id": "Sarn",
     "name": "Sarn",
     "zones": [
-      { "id": 1, "name": "Crematerium", "price": 50 },
-      { "id": 2, "name": "Gateway", "price": 60 },
-      { "id": 3, "name": "Grains Gate", "price": 70 },
-      { "id": 4, "name": "Market", "price": 150 },
-      { "id": 5, "name": "Battle Field", "price": 160 }
+      { "id": 1, "name": "Crematerium", "price": 50, "duration": 1500, "description": "lorem ipsum 1" },
+      { "id": 2, "name": "Gateway", "price": 60, "duration": 1800, "description": "lorem ipsum 2" },
+      { "id": 3, "name": "Grains Gate", "price": 70, "duration": 2000, "description": "lorem ipsum 3" },
+      { "id": 4, "name": "Market", "price": 150, "duration": 2500, "description": "lorem ipsum 4" },
+      { "id": 5, "name": "Battle Field", "price": 160, "duration": 3000, "description": "lorem ipsum 5" }
     ]
   },
   {
     "id": "Oriath",
     "name": "Oriath",
     "zones": [
-      { "id": 6, "name": "Catheral", "price": 150 },
-      { "id": 7, "name": "City Square", "price": 160 },
-      { "id": 8, "name": "Cannals", "price": 150 },
-      { "id": 9, "name": "Slave Pens", "price": 170 },
-      { "id": 10, "name": "Overseer", "price": 170 }
+      { "id": 6, "name": "Catheral", "price": 150, "duration": 2000, "description": "lorem ipsum 6" },
+      { "id": 7, "name": "City Square", "price": 160, "duration": 2500, "description": "lorem ipsum 7" },
+      { "id": 8, "name": "Cannals", "price": 150, "duration": 3000, "description": "lorem ipsum 8" },
+      { "id": 9, "name": "Slave Pens", "price": 170, "duration": 3500, "description": "lorem ipsum 9" },
+      { "id": 10, "name": "Overseer", "price": 170, "duration": 3900, "description": "lorem ipsum 10" }
     ]
   },
   {
     "id": "Highlands",
     "name": "Highlands",
     "zones": [
-      { "id": 11, "name": "Supply Way", "price": 210 },
-      { "id": 12, "name": "Rope", "price": 230 },
-      { "id": 13, "name": "Goat's path", "price": 250 },
-      { "id": 14, "name": "Temple", "price": 270 }
+      { "id": 11, "name": "Supply Way", "price": 210, "duration": 4000, "description": "lorem ipsum 11" },
+      { "id": 12, "name": "Rope", "price": 230, "duration": 4500, "description": "lorem ipsum 12" },
+      { "id": 13, "name": "Goat's path", "price": 250, "duration": 5000, "description": "lorem ipsum 13" },
+      { "id": 14, "name": "Temple", "price": 270, "duration": 5500, "description": "lorem ipsum 14" }
     ]
   }
 ]
