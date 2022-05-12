@@ -55,4 +55,5 @@ export interface Item extends Leveled {
   base: string;
   rarity: ItemRarity;
   modifiers: ModifierInstance[];
+  tags?: string[];
 }
