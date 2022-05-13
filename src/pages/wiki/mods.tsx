@@ -1,4 +1,6 @@
 import {
+  IonAccordion,
+  IonAccordionGroup,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -28,25 +30,42 @@ const Items: React.FC = () => {
         <IonList>
           {mods.map((mod) => (
             <IonCard key={mod.name}>
-              <IonCardHeader>
-                <IonLabel>{mod.name}</IonLabel>
+              <IonCardHeader style={{ padding: 0 }}>
+                <IonItem>
+                  <IonLabel>{mod.name}</IonLabel>
+                  <IonChip slot="end">{mod.type}</IonChip>
+                </IonItem>
               </IonCardHeader>
-              <IonCardContent>{mod.description}</IonCardContent>
-              <IonList>
-                {mod.tiers.map((t, idx) => (
-                  <IonItem key={idx}>
-                    <IonLabel>
-                      <IonText color="secondary">Level {t.level}</IonText>{' '}
-                      <IonText>
-                        [{t.magnitudes[0]} - {t.magnitudes[1]}]
-                      </IonText>
-                    </IonLabel>
-                    <IonNote slot="end" color="danger">
-                      {t.weight}
-                    </IonNote>
-                  </IonItem>
+              <IonCardContent>
+                {mod.tags.map((t) => (
+                  <IonChip key={t}>{t}</IonChip>
                 ))}
-              </IonList>
+                <IonText>
+                  <p>{mod.description}</p>
+                </IonText>
+              </IonCardContent>
+              <IonAccordionGroup>
+                <IonAccordion value="tiers">
+                  <IonItem slot="header">
+                    <IonLabel>Tiers</IonLabel>
+                  </IonItem>
+                  <IonList slot="content">
+                    {mod.tiers.map((t, idx) => (
+                      <IonItem key={idx}>
+                        <IonLabel>
+                          <IonText color="secondary">Level {t.level}</IonText>{' '}
+                          <IonText>
+                            [{t.magnitudes[0]} - {t.magnitudes[1]}]
+                          </IonText>
+                        </IonLabel>
+                        <IonNote slot="end" color="danger">
+                          {t.weight}
+                        </IonNote>
+                      </IonItem>
+                    ))}
+                  </IonList>
+                </IonAccordion>
+              </IonAccordionGroup>
             </IonCard>
           ))}
         </IonList>

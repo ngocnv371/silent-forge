@@ -15,6 +15,7 @@ interface Mod {
   type: 'Prefix' | 'Suffix';
   weight: number;
   description: string;
+  tags: string[];
   tier: {
     level: Progression;
     weight: Progression;
@@ -55,6 +56,7 @@ function generate(mod: Mod) {
     type: mod.type,
     weight: mod.weight,
     description: mod.description,
+    tags: mod.tags,
     tiers,
   };
   console.log(`final mod`, ret);
