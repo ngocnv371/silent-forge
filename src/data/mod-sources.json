@@ -1,0 +1,32 @@
+[
+  {
+    "name": "of Youth",
+    "type": "Suffix",
+    "weight": 400,
+    "description": "Adds # to Maximum Life",
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "curve": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "curve": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 10,
+          "max": 120,
+          "curve": "ease"
+        },
+        {
+          "min": 20,
+          "max": 160,
+          "curve": "ease"
+        }
+      ]
+    }
+  }
+]

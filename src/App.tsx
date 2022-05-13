@@ -31,6 +31,7 @@ import Tap from './pages/tap';
 import Zones from './pages/zones';
 import Forge from './pages/forge';
 import WikiItems from './pages/wiki/items';
+import WikiMods from './pages/wiki/mods';
 
 setupIonicReact();
 
@@ -50,6 +51,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/wiki/items">
             <WikiItems />
+          </Route>
+          <Route exact path="/wiki/mods">
+            <WikiMods />
           </Route>
           <Route exact path="/tap">
             <Tap />
