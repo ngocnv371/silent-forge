@@ -13,23 +13,28 @@ import {
   IonNote,
   IonPage,
   IonSearchbar,
+  IonSelect,
+  IonSelectOption,
   IonText,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
 import { useMemo, useState } from 'react';
-import originalMods from '../../data/mod-sources';
+import originalMods, { tags as originalTags } from '../../data/mod-sources';
 
 const Items: React.FC = () => {
   const [searchText, setSearchText] = useState('');
+  const [tags, setTags] = useState([] as string[]);
   const filteredMods = useMemo(
     () =>
-      originalMods.filter(
-        (m) =>
-          m.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) ||
-          m.description.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
-      ),
-    [searchText]
+      originalMods
+        .filter(
+          (m) =>
+            m.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) ||
+            m.description.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+        )
+        .filter((m) => !tags.length || m.tags.some((t) => tags.includes(t))),
+    [searchText, tags]
   );
 
   return (
@@ -44,6 +49,16 @@ const Items: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
+          <IonItem>
+            <IonLabel>Tags</IonLabel>
+            <IonSelect value={tags} multiple onIonChange={(e) => setTags(e.detail.value!)}>
+              {originalTags.map((t) => (
+                <IonSelectOption key={t} value={t}>
+                  {t}
+                </IonSelectOption>
+              ))}
+            </IonSelect>
+          </IonItem>
           {filteredMods.map((mod) => (
             <IonCard key={mod.name}>
               <IonCardHeader style={{ padding: 0 }}>

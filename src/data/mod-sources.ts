@@ -72,4 +72,9 @@ function generate(mod: Mod) {
 const mods = sources.map(generate);
 console.log('generated mods', mods);
 
+// all tags available
+export const tags = mods.reduce((p, c) => {
+  return [...p, ...c.tags.filter((i) => !p.includes(i))];
+}, [] as string[]);
+
 export default mods;
