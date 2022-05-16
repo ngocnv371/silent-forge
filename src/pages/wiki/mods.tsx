@@ -12,23 +12,39 @@ import {
   IonList,
   IonNote,
   IonPage,
+  IonSearchbar,
   IonText,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import mods from '../../data/mod-sources';
+import { useMemo, useState } from 'react';
+import originalMods from '../../data/mod-sources';
 
 const Items: React.FC = () => {
+  const [searchText, setSearchText] = useState('');
+  const filteredMods = useMemo(
+    () =>
+      originalMods.filter(
+        (m) =>
+          m.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) ||
+          m.description.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+      ),
+    [searchText]
+  );
+
   return (
     <IonPage id="wiki-mods-page">
       <IonHeader>
         <IonToolbar>
           <IonTitle>Wiki &gt; Mods</IonTitle>
         </IonToolbar>
+        <IonToolbar>
+          <IonSearchbar value={searchText} onIonChange={(e) => setSearchText(e.detail.value!)} />
+        </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          {mods.map((mod) => (
+          {filteredMods.map((mod) => (
             <IonCard key={mod.name}>
               <IonCardHeader style={{ padding: 0 }}>
                 <IonItem>
