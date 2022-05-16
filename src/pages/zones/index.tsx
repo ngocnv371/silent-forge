@@ -8,22 +8,19 @@ import {
   IonContent,
   IonHeader,
   IonIcon,
-  IonItem,
   IonLabel,
   IonList,
-  IonNote,
   IonPage,
   IonProgressBar,
   IonSegment,
   IonSegmentButton,
-  IonText,
   IonToolbar,
   SegmentChangeEventDetail,
 } from '@ionic/react';
-import { pin, location, play, wifi, wine, warning, walk, stop } from 'ionicons/icons';
-import { useEffect, useMemo, useState } from 'react';
-import { Region, Zone } from '../../models/zone';
-import { regions } from './data';
+import { play, stop } from 'ionicons/icons';
+import { useMemo, useState } from 'react';
+import { regions } from '../../data/regions';
+import { Zone } from '../../models/zone';
 import useActiveSkillZone from './useActiveSkillZone';
 
 const segments = regions.map((r) => (

@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Item, ItemRarity, Modifier, ModifierInstance, ModifierTier, ModifierType, Weighted } from '../../models/item';
-
-const modifiers: Modifier[] = require('../../data/mods.json');
+import modifiers from '../../data/mods';
+import { Item, ItemRarity, ModifierInstance, ModifierTier, ModifierType, Weighted } from '../../models/item';
 
 function getWeightedRandom<T extends Weighted>(items: T[], isEqual: (a: T, b: T) => boolean, quantity: number) {
   function calculateMap() {

@@ -1,13 +1,14 @@
 import BezierEasing, { EasingFunction } from 'bezier-easing';
 
 const NUM_TIERS = 9;
+const sources = require('./raw/mod-sources.json') as Mod[];
 
 type CurveType = 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
 
-interface Progression {
+interface Curve {
   min: number;
   max: number;
-  curve: CurveType;
+  type: CurveType;
 }
 
 interface Mod {
@@ -17,26 +18,30 @@ interface Mod {
   description: string;
   tags: string[];
   tier: {
-    level: Progression;
-    weight: Progression;
-    magnitudes: [Progression, Progression];
+    level: Curve;
+    weight: Curve;
+    magnitudes: [Curve, Curve];
   };
 }
 
-const sources = require('./mod-sources.json') as Mod[];
-
-const defaultCurves: { [key in CurveType]: EasingFunction } = {
-  linear: BezierEasing(0, 0, 1, 1),
-  ease: BezierEasing(0.25, 0.1, 0.25, 1),
-  'ease-in': BezierEasing(0.42, 0, 1, 1),
-  'ease-out': BezierEasing(0, 0, 0.58, 1),
-  'ease-in-out': BezierEasing(0.42, 0, 0.58, 1),
-};
+function curveFunctionFactory(type: CurveType): EasingFunction {
+  const defaultCurves: { [key in CurveType]: EasingFunction } = {
+    linear: BezierEasing(0, 0, 1, 1),
+    ease: BezierEasing(0.25, 0.1, 0.25, 1),
+    'ease-in': BezierEasing(0.42, 0, 1, 1),
+    'ease-out': BezierEasing(0, 0, 0.58, 1),
+    'ease-in-out': BezierEasing(0.42, 0, 0.58, 1),
+  };
+  return defaultCurves[type];
+}
 
 function generate(mod: Mod) {
-  function applyCurve(progression: Progression, index: number) {
-    const { min, max, curve } = progression;
-    const func = defaultCurves[curve];
+  function applyCurve(curve: Curve, index: number) {
+    const { min, max, type } = curve;
+    const func = curveFunctionFactory(type);
+    if (!func) {
+      throw new Error(`curve function '${type}' not found`);
+    }
     return Math.floor(func(index) * (max - min) + min);
   }
   console.groupCollapsed(`generate mod ${mod.name}`);
@@ -65,6 +70,6 @@ function generate(mod: Mod) {
 }
 
 const mods = sources.map(generate);
-console.log(mods);
+console.log('generated mods', mods);
 
 export default mods;

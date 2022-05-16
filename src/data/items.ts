@@ -5,7 +5,7 @@ interface RawItem {
   tags: string[];
 }
 
-const rawItems = require('./items.json') as RawItem[];
+const rawItems = require('./raw/items.json') as RawItem[];
 const items = rawItems.map((i) => {
   const x: Item = {
     name: i.name,

@@ -7,7 +7,7 @@ export interface Zone {
 }
 
 export interface Region {
-    id: string;
-    name: string;
-    zones: Zone[];
-  }
+  id: string;
+  name: string;
+  zones: Zone[];
+}

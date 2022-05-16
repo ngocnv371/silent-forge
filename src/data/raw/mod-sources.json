@@ -9,23 +9,23 @@
       "level": {
         "min": 0,
         "max": 84,
-        "curve": "ease"
+        "type": "ease"
       },
       "weight": {
         "min": 50,
         "max": 5000,
-        "curve": "ease"
+        "type": "ease"
       },
       "magnitudes": [
         {
           "min": 10,
           "max": 120,
-          "curve": "ease"
+          "type": "ease"
         },
         {
           "min": 20,
           "max": 160,
-          "curve": "ease"
+          "type": "ease"
         }
       ]
     }
@@ -40,23 +40,23 @@
       "level": {
         "min": 0,
         "max": 84,
-        "curve": "ease"
+        "type": "ease"
       },
       "weight": {
         "min": 50,
         "max": 5000,
-        "curve": "ease"
+        "type": "ease"
       },
       "magnitudes": [
         {
           "min": 20,
           "max": 160,
-          "curve": "ease"
+          "type": "ease"
         },
         {
           "min": 30,
           "max": 190,
-          "curve": "ease"
+          "type": "ease"
         }
       ]
     }

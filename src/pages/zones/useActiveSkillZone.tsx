@@ -1,6 +1,6 @@
 import { useIonToast } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
-import { zones } from './data';
+import { zones } from '../../data/regions';
 
 export default function useActiveSkillZone(zoneId: string): [string, React.Dispatch<React.SetStateAction<string>>] {
   const [activeZoneId, setActiveZoneId] = useState(zoneId);
