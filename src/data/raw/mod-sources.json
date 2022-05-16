@@ -31,11 +31,198 @@
     }
   },
   {
+    "name": "of Turtle",
+    "type": "Suffix",
+    "weight": 400,
+    "description": "+# armour",
+    "tags": ["armour"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 20,
+          "max": 3500,
+          "type": "ease"
+        },
+        {
+          "min": 40,
+          "max": 4500,
+          "type": "ease"
+        }
+      ]
+    }
+  },
+  {
+    "name": "of Cat",
+    "type": "Suffix",
+    "weight": 400,
+    "description": "+# evasion",
+    "tags": ["armour", "evasion"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 20,
+          "max": 3500,
+          "type": "ease"
+        },
+        {
+          "min": 40,
+          "max": 4500,
+          "type": "ease"
+        }
+      ]
+    }
+  },
+  
+  {
+    "name": "of Angel",
+    "type": "Suffix",
+    "weight": 400,
+    "description": "+# energy shield",
+    "tags": ["armour", "energy shield"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 20,
+          "max": 400,
+          "type": "ease"
+        },
+        {
+          "min": 40,
+          "max": 500,
+          "type": "ease"
+        }
+      ]
+    }
+  },
+  {
     "name": "Tyrant's",
     "type": "Prefix",
     "weight": 400,
     "description": "Adds # to physical damage",
     "tags": ["physical", "weapon"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 20,
+          "max": 160,
+          "type": "ease"
+        },
+        {
+          "min": 30,
+          "max": 190,
+          "type": "ease"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Berserker's",
+    "type": "Prefix",
+    "weight": 400,
+    "description": "Adds # to fire damage",
+    "tags": ["fire", "weapon"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 10,
+          "max": 130,
+          "type": "ease"
+        },
+        {
+          "min": 30,
+          "max": 150,
+          "type": "ease"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Crusader's",
+    "type": "Prefix",
+    "weight": 400,
+    "description": "Adds # to lightning damage",
+    "tags": ["lightning", "weapon"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 20,
+          "max": 160,
+          "type": "ease"
+        },
+        {
+          "min": 30,
+          "max": 190,
+          "type": "ease"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Hater's",
+    "type": "Prefix",
+    "weight": 400,
+    "description": "Adds # to cold damage",
+    "tags": ["cold", "weapon"],
     "tier": {
       "level": {
         "min": 0,
