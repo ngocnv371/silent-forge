@@ -38,7 +38,7 @@ const Items: React.FC = () => {
   );
 
   return (
-    <IonPage id="wiki-mods-page">
+    <IonPage id="wiki-monsters-page">
       <IonHeader>
         <IonToolbar>
           <IonTitle>Wiki &gt; Mods</IonTitle>

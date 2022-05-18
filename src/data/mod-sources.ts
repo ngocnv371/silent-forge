@@ -1,15 +1,7 @@
-import BezierEasing, { EasingFunction } from 'bezier-easing';
+import { applyCurve, Curve } from '../models/curve';
 
 const NUM_TIERS = 9;
 const sources = require('./raw/mod-sources.json') as Mod[];
-
-type CurveType = 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
-
-interface Curve {
-  min: number;
-  max: number;
-  type: CurveType;
-}
 
 interface Mod {
   name: string;
@@ -24,26 +16,7 @@ interface Mod {
   };
 }
 
-function curveFunctionFactory(type: CurveType): EasingFunction {
-  const defaultCurves: { [key in CurveType]: EasingFunction } = {
-    linear: BezierEasing(0, 0, 1, 1),
-    ease: BezierEasing(0.25, 0.1, 0.25, 1),
-    'ease-in': BezierEasing(0.42, 0, 1, 1),
-    'ease-out': BezierEasing(0, 0, 0.58, 1),
-    'ease-in-out': BezierEasing(0.42, 0, 0.58, 1),
-  };
-  return defaultCurves[type];
-}
-
 function generate(mod: Mod) {
-  function applyCurve(curve: Curve, index: number) {
-    const { min, max, type } = curve;
-    const func = curveFunctionFactory(type);
-    if (!func) {
-      throw new Error(`curve function '${type}' not found`);
-    }
-    return Math.floor(func(index) * (max - min) + min);
-  }
   console.groupCollapsed(`generate mod ${mod.name}`);
   const tiers = Array.from(Array(NUM_TIERS).keys()).map((idx) => {
     console.log(`generate tier ${idx}`);
@@ -69,8 +42,12 @@ function generate(mod: Mod) {
   return ret;
 }
 
+console.groupCollapsed('generate mods');
+console.time('generate mods time');
 const mods = sources.map(generate);
 console.log('generated mods', mods);
+console.timeEnd('generate mods time');
+console.groupEnd();
 
 // all tags available
 export const tags = mods.reduce((p, c) => {
