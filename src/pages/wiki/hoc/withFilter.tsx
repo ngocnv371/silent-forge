@@ -1,4 +1,6 @@
 import {
+  IonBackButton,
+  IonButtons,
   IonContent,
   IonHeader,
   IonItem,
@@ -23,9 +25,12 @@ function withFilter(
     const [selectedTags, selectTags] = useState([] as string[]);
     const filteredItems = useMemo(() => selectData(searchText, selectedTags), [searchText, selectedTags]);
     return (
-      <IonPage id="wiki-monsters-page">
+      <IonPage id="wiki-page">
         <IonHeader>
           <IonToolbar>
+            <IonButtons slot="start">
+              <IonBackButton defaultHref="/" />
+            </IonButtons>
             <IonTitle>Wiki &gt; Mods</IonTitle>
           </IonToolbar>
           <IonToolbar>
