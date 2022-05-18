@@ -7,11 +7,13 @@ import {
   IonCardTitle,
   IonContent,
   IonFooter,
+  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
   IonList,
   IonPage,
+  IonTitle,
   IonToolbar,
 } from '@ionic/react';
 import { refresh } from 'ionicons/icons';
@@ -57,6 +59,11 @@ const Forge: React.FC = () => {
 
   return (
     <IonPage id="forge-page">
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Forge</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent fullscreen>
         <ItemView item={item} />
       </IonContent>
