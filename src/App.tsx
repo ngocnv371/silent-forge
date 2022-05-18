@@ -44,9 +44,7 @@ const App: React.FC = () => (
           <Route exact path="/status">
             <Status />
           </Route>
-          <Route path="/skills/:skillId/zones">
-            <Zones />
-          </Route>
+          <Route path="/skills/:skillId/zones" component={Zones}></Route>
           <Route exact path="/skills">
             <Skills />
           </Route>

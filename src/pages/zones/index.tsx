@@ -1,4 +1,5 @@
 import {
+  IonBackButton,
   IonButton,
   IonButtons,
   IonCard,
@@ -14,11 +15,14 @@ import {
   IonProgressBar,
   IonSegment,
   IonSegmentButton,
+  IonTitle,
   IonToolbar,
   SegmentChangeEventDetail,
 } from '@ionic/react';
+
 import { play, stop } from 'ionicons/icons';
 import { useMemo, useState } from 'react';
+import { RouteComponentProps } from 'react-router';
 import { regions } from '../../data/regions';
 import { Zone } from '../../models/zone';
 import useActiveSkillZone from './useActiveSkillZone';
@@ -62,7 +66,12 @@ const ZoneItem: React.FC<ZoneItemProps> = (props: ZoneItemProps) => {
   );
 };
 
-const Zones: React.FC = (a) => {
+interface ZonesPageProps
+  extends RouteComponentProps<{
+    skillId: string;
+  }> {}
+
+const Zones: React.FC<ZonesPageProps> = ({ match }) => {
   const [segmentId, setSegmentId] = useState(regions[0].id);
   const [activeZoneId, setActiveZoneId] = useActiveSkillZone('');
 
@@ -74,6 +83,12 @@ const Zones: React.FC = (a) => {
   return (
     <IonPage id="zones-page">
       <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/" />
+          </IonButtons>
+          <IonTitle>Select a {match.params.skillId} zone</IonTitle>
+        </IonToolbar>
         <IonToolbar>
           <IonSegment scrollable onIonChange={handleSegmentChanged} value={segmentId}>
             {segments}
