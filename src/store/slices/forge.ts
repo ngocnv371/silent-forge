@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import modifiers from '../../data/mods';
+import modifiers from '../../data/modifiers';
 import { Item, ItemRarity, ModifierInstance, ModifierTier, ModifierType, Weighted } from '../../models/item';
 
 function getWeightedRandom<T extends Weighted>(items: T[], isEqual: (a: T, b: T) => boolean, quantity: number) {
@@ -42,28 +42,26 @@ function getWeightedRandom<T extends Weighted>(items: T[], isEqual: (a: T, b: T)
   return bag;
 }
 
-function rollMagnitudes(tier: ModifierTier) {
-  const m = tier.magnitudes.map((mag) => {
-    if (mag.length === 1) {
-      return mag[0];
-    }
-    if (mag.some((m) => m.toString().includes('.'))) {
-      // if this mag contains decimal: [1, 1.2] we need to multiply it to round number [100, 120]
-      // scale up
-      const x100 = mag.map((m) => m * 100);
-      const [min, max] = x100;
-      const ret = min + Math.floor(Math.random() * (max - min));
-      // scale down
-      // keep only 2 decimals
-      return Math.round(ret * 100) / 10000;
-    }
-    if (mag.length > 1) {
-      const [min, max] = mag;
-      return min + Math.floor(Math.random() * (max - min));
-    }
+function rollMagnitude(tier: ModifierTier) {
+  const mag = tier.magnitudes
+  if (mag.length === 1) {
     return mag[0];
-  });
-  return m;
+  }
+  if (mag.some((m) => m.toString().includes('.'))) {
+    // if this mag contains decimal: [1, 1.2] we need to multiply it to round number [100, 120]
+    // scale up
+    const x100 = mag.map((m) => m * 100);
+    const [min, max] = x100;
+    const ret = min + Math.floor(Math.random() * (max - min));
+    // scale down
+    // keep only 2 decimals
+    return Math.round(ret * 100) / 10000;
+  }
+  if (mag.length > 1) {
+    const [min, max] = mag;
+    return min + Math.floor(Math.random() * (max - min));
+  }
+  return mag[0];
 }
 
 function createItemName(item: Item) {
@@ -138,13 +136,13 @@ export function reforge(item: Item): Item {
   const inializedMods: ModifierInstance[] = mods.map((m) => {
     const tiers = getWeightedRandom<ModifierTier>(m.tiers, isNameEqual, 1);
     const tier = tiers[0];
-    const magnitudes = rollMagnitudes(tier);
+    const magnitude = rollMagnitude(tier);
     return {
       type: m.type,
       level: tier.level,
       name: tier.name,
       description: m.description,
-      magnitudes,
+      magnitude,
     };
   });
 

@@ -19,4 +19,9 @@ const items = rawItems.map((i) => {
   return x;
 });
 
+// all tags available
+export const tags = items.reduce((p, c) => {
+  return [...p, ...(c.tags || []).filter((i) => !p.includes(i))];
+}, [] as string[]);
+
 export default items;

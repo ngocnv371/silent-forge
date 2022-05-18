@@ -22,9 +22,7 @@ import { reforgeItem } from '../store/slices/forge';
 
 function formatModifierDescription(instance: ModifierInstance) {
   let desc = instance.description;
-  for (let i = 0; i < instance.magnitudes.length; i++) {
-    desc = desc.replace('#', instance.magnitudes[0].toString());
-  }
+  desc = desc.replace('#', instance.magnitude.toString());
   return desc;
 }
 

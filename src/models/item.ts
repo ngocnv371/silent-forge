@@ -13,7 +13,7 @@ export interface Leveled {
 
 export interface ModifierTier extends Weighted, Leveled {
   name: string;
-  magnitudes: number[][];
+  magnitudes: number[];
 }
 
 export interface Modifier extends Weighted {
@@ -39,7 +39,7 @@ export interface ModifierInstance {
   type: ModifierType;
   description: string;
   level: number;
-  magnitudes: number[];
+  magnitude: number;
 }
 
 export enum ItemRarity {

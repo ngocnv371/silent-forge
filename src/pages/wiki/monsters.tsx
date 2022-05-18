@@ -28,7 +28,11 @@ const Monsters: React.FC<{ items: BeastiaryEntry[] }> = ({ items }) => {
 
 function filterMonsters(searchText: string, tags: string[]): any[] {
   return entries
-    .filter((e) => e.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()))
+    .filter(
+      (e) =>
+        e.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) ||
+        e.description.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+    )
     .filter((m) => !tags.length || m.tags.some((t) => tags.includes(t)));
 }
 
