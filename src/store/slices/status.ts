@@ -23,8 +23,10 @@ const initialState = {
 const slice = createSlice({
   name: 'status',
   initialState,
-  reducers: {},
+  reducers: {
+    reset(state) {}
+  },
 });
 
-export const {} = slice.actions;
+export const { reset } = slice.actions;
 export default slice.reducer;
