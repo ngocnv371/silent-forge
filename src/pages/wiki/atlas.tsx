@@ -13,20 +13,57 @@ import {
   IonTitle,
   IonToolbar,
   IonChip,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonText,
+  IonAccordionGroup,
+  IonAccordion,
+  IonNote,
 } from '@ionic/react';
 import { useMemo, useState } from 'react';
 import regions, { maps, tags } from '../../data/atlas';
 import Region from '../../models/atlas';
 
+const EncounterView: React.FC<{ encounter: Region.Encounter }> = ({ encounter }) => {
+  return (
+    <IonItem>
+      <IonLabel>
+        <IonText>{encounter.name}</IonText>
+      </IonLabel>
+      <IonNote color="danger">{encounter.weight}</IonNote>
+    </IonItem>
+  );
+};
 const MapView: React.FC<{ map: Region.Map }> = ({ map }) => {
   const tags = [map.region, ...map.tags];
   return (
-    <IonItem key={map.name}>
-      <IonLabel>
-        <h3>{map.name}</h3>
+    <IonCard key={map.name}>
+      <IonCardHeader>
+        <IonCardTitle>{map.name}</IonCardTitle>
+      </IonCardHeader>
+      <IonCardContent>
         <p>{tags && tags.map((t) => <IonChip key={t}>{t}</IonChip>)}</p>
-      </IonLabel>
-    </IonItem>
+        <IonText>
+          <p>
+            Length: {map.length[0]} - {map.length[1]}
+          </p>
+        </IonText>
+      </IonCardContent>
+      <IonAccordionGroup>
+        <IonAccordion value="encounters">
+          <IonItem slot="header">
+            <IonLabel>Encounters</IonLabel>
+          </IonItem>
+          <IonList slot="content">
+            {map.encounters.map((e) => (
+              <EncounterView key={e.name} encounter={e} />
+            ))}
+          </IonList>
+        </IonAccordion>
+      </IonAccordionGroup>
+    </IonCard>
   );
 };
 
