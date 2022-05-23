@@ -70,5 +70,41 @@
     },
     "tags": ["spider", "neutral"],
     "skills": ["Solid Punch", "Normal Punch", "Laugh"]
+  },
+  {
+    "name": "Dark Bat",
+    "description": "A small nuisance",
+    "level": {
+      "min": 1,
+      "max": 100,
+      "type": "linear"
+    },
+    "strength": {
+      "min": 10,
+      "max": 100,
+      "type": "ease"
+    },
+    "dexterity": {
+      "min": 20,
+      "max": 150,
+      "type": "ease"
+    },
+    "intelligence": {
+      "min": 10,
+      "max": 68,
+      "type": "ease"
+    },
+    "maxLife": {
+      "min": 58,
+      "max": 500,
+      "type": "ease"
+    },
+    "maxMana": {
+      "min": 20,
+      "max": 100,
+      "type": "ease"
+    },
+    "tags": ["bat", "neutral"],
+    "skills": ["Scratch", "Screech"]
   }
 ]

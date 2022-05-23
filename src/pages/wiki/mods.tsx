@@ -12,7 +12,7 @@ import {
   IonText,
 } from '@ionic/react';
 import originalMods, { tags as originalTags } from '../../data/modifiers';
-import { Modifier } from '../../models/item';
+import { Modifier, ModifierType } from '../../models/item';
 import withFilter from './hoc/withFilter';
 
 const Items: React.FC<{ items: Modifier[] }> = ({ items }) => {
@@ -69,7 +69,19 @@ function selectData(searchText: string, tags: string[]): Modifier[] {
         m.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) ||
         m.description.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
     )
-    .filter((m) => !m.tags || !tags.length || m.tags.some((t) => tags.includes(t)));
+    .filter(
+      (m) =>
+        !m.tags ||
+        !tags.length ||
+        tags.some((t) => t === m.type.toLocaleLowerCase()) ||
+        m.tags.some((t) => tags.includes(t))
+    );
 }
 
-export default withFilter(Items, originalTags, selectData);
+const tagsWithAffixes = [
+  ModifierType.Prefix.toLocaleLowerCase(),
+  ModifierType.Suffix.toLocaleLowerCase(),
+  ...originalTags,
+];
+
+export default withFilter(Items, 'Wiki > Mods', tagsWithAffixes, selectData);

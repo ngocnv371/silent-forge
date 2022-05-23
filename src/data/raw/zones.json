@@ -3,8 +3,8 @@
     "id": "Sarn",
     "name": "Sarn",
     "zones": [
-      { "id": 1, "name": "Crematerium", "price": 50, "duration": 1500, "description": "lorem ipsum 1" },
-      { "id": 2, "name": "Gateway", "price": 60, "duration": 1800, "description": "lorem ipsum 2" },
+      { "id": 1, "name": "Crematerium", "price": 50, "duration": 1500, "description": "lorem ipsum 1", "monsters": ["Grey Hunter"] },
+      { "id": 2, "name": "Gateway", "price": 60, "duration": 1800, "description": "lorem ipsum 2", "monsters": ["Red Echidna"] },
       { "id": 3, "name": "Grains Gate", "price": 70, "duration": 2000, "description": "lorem ipsum 3" },
       { "id": 4, "name": "Market", "price": 150, "duration": 2500, "description": "lorem ipsum 4" },
       { "id": 5, "name": "Battle Field", "price": 160, "duration": 3000, "description": "lorem ipsum 5" }

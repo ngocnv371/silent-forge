@@ -28,4 +28,4 @@ function selectData(searchText: string, tags: string[]): Item[] {
     .filter((m) => !m.tags || !tags.length || m.tags.some((t) => tags.includes(t)));
 }
 
-export default withFilter(Items, tags, selectData);
+export default withFilter(Items, 'Wiki > Items', tags, selectData);

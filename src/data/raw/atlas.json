@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Arthan",
+    "maps": [
+      {
+        "name": "Underground River",
+        "length": [2, 6],
+        "tags": ["water"],
+        "encounters": [
+          { "weight": 500, "type": "resource", "name": "Iron Ore Veins" },
+          { "weight": 1500, "type": "resource", "name": "Copper Ore Veins" },
+          { "weight": 1500, "type": "monster", "name": "Grey Hunter" },
+          { "weight": 1500, "type": "monster", "name": "Dark Bat" }
+        ]
+      },
+      {
+        "name": "Canyon",
+        "length": [2, 6],
+        "tags": ["rock"],
+        "encounters": [
+          { "weight": 500, "type": "resource", "name": "Iron Ore Veins" },
+          { "weight": 1500, "type": "resource", "name": "Copper Ore Veins" },
+          { "weight": 1500, "type": "monster", "name": "Red Echidna" },
+          { "weight": 1500, "type": "monster", "name": "Dark Bat" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cartis",
+    "maps": [
+      {
+        "name": "Strand",
+        "tags": ["sand", "water"],
+        "length": [2, 6],
+        "encounters": [
+          { "weight": 1500, "type": "resource", "name": "Copper Ore Veins" },
+          { "weight": 1500, "type": "monster", "name": "Grey Hunter" }
+        ]
+      },
+      {
+        "name": "Waste Land",
+        "length": [2, 6],
+        "tags": ["sand"],
+        "encounters": [
+          { "weight": 500, "type": "resource", "name": "Iron Ore Veins" },
+          { "weight": 1500, "type": "monster", "name": "Dark Bat" }
+        ]
+      }
+    ]
+  }
+]

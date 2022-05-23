@@ -36,4 +36,4 @@ function filterMonsters(searchText: string, tags: string[]): any[] {
     .filter((m) => !tags.length || m.tags.some((t) => tags.includes(t)));
 }
 
-export default withFilter(Monsters, tags, filterMonsters);
+export default withFilter(Monsters, 'Wiki > Monsters', tags, filterMonsters);

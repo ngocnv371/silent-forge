@@ -17,6 +17,7 @@ import { useMemo, useState } from 'react';
 
 function withFilter(
   WrappedComponent: React.FC<{ items: any[] }>,
+  title: string,
   tags: string[],
   selectData: (searchText: string, tags: string[]) => any[]
 ): React.FC {
@@ -31,7 +32,7 @@ function withFilter(
             <IonButtons slot="start">
               <IonBackButton defaultHref="/" />
             </IonButtons>
-            <IonTitle>Wiki &gt; Mods</IonTitle>
+            <IonTitle>{title}</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar value={searchText} onIonChange={(e) => setSearchText(e.detail.value!)} />
