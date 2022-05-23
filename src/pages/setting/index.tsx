@@ -17,8 +17,8 @@ const Setting: React.FC = () => {
           <IonItem routerLink='/wiki/items'>
             <IonLabel>Items</IonLabel>
           </IonItem>
-          <IonItem routerLink='/wiki/mods'>
-            <IonLabel>Mods</IonLabel>
+          <IonItem routerLink='/wiki/modifiers'>
+            <IonLabel>Modifiers</IonLabel>
           </IonItem>
           <IonItem routerLink='/wiki/atlas'>
             <IonLabel>Atlas</IonLabel>

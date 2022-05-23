@@ -55,7 +55,7 @@ const Atlas: React.FC = () => {
     [searchText, selectedRegions, selectedTags]
   );
   return (
-    <IonPage id="wiki-page">
+    <IonPage id="wiki-atlas-page">
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
