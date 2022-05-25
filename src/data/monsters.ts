@@ -1,6 +1,7 @@
 import { Character } from '../models';
+import { ItemStack } from '../models/item';
 import { applyCurve, Curve } from '../models/curve';
-
+import items from './items';
 export interface BeastiaryEntry {
   name: string;
   level: Curve;
@@ -50,6 +51,15 @@ export function createMonster(name: string, level: number): Character {
   char.mana = char.maxMana;
   console.groupEnd();
   return char;
+}
+
+export function generateLoot(character: Character): ItemStack[] {
+  return [
+    {
+      item: items[0],
+      quantity: 1,
+    },
+  ];
 }
 
 // all tags available

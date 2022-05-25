@@ -1,4 +1,4 @@
-import { IonCard, IonCardHeader, IonImg, IonProgressBar, IonText, IonTitle } from '@ionic/react';
+import { IonCard, IonCardHeader, IonImg, IonProgressBar, IonTitle } from '@ionic/react';
 import { useState } from 'react';
 import { Character } from '../../models';
 

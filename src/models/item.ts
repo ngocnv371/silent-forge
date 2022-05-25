@@ -57,3 +57,8 @@ export interface Item extends Leveled {
   modifiers: ModifierInstance[];
   tags?: string[];
 }
+
+export interface ItemStack {
+  item: Item;
+  quantity: number;
+}
