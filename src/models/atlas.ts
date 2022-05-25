@@ -6,6 +6,10 @@ namespace Atlas {
     name: string;
     weight: number;
   }
+  export interface EncounterInstance {
+    name: string;
+    level: number;
+  }
   export interface Map {
     name: string;
     region: string;

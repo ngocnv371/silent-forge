@@ -106,5 +106,77 @@
     },
     "tags": ["bat", "neutral"],
     "skills": ["Scratch", "Screech"]
+  },
+  {
+    "name": "Iron Ore Veins",
+    "description": "A big rock with iron in it",
+    "level": {
+      "min": 1,
+      "max": 100,
+      "type": "linear"
+    },
+    "strength": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "dexterity": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "intelligence": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "maxLife": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "maxMana": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "tags": ["rock"],
+    "skills": ["Silent Treatment"]
+  },
+  {
+    "name": "Copper Ore Veins",
+    "description": "A big rock with copper in it",
+    "level": {
+      "min": 1,
+      "max": 100,
+      "type": "linear"
+    },
+    "strength": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "dexterity": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "intelligence": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "maxLife": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "maxMana": {
+      "min": 20,
+      "max": 120,
+      "type": "ease"
+    },
+    "tags": ["rock"],
+    "skills": ["Silent Treatment"]
   }
 ]

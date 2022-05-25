@@ -15,43 +15,21 @@ import { reset, tap } from '../../store/slices/tap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useMemo } from 'react';
+import MonsterView from './monster';
+import { Character } from '../../models';
+import Queue from './queue';
+import { maps } from '../../data/atlas';
 
 const Tap: React.FC = () => {
   const dispatch = useDispatch();
-  const name = useSelector((state: any) => state.tap.name);
-  const life = useSelector((state: any) => state.tap.life);
-  const maxLife = useSelector((state: any) => state.tap.maxLife);
-  const percentage = life / maxLife;
-  const isDead = life < 1;
-  const collectSection = useMemo(() => {
-    return (
-      isDead && (
-        <section style={{ textAlign: 'center' }}>
-          <IonButton size="large" color="primary">
-            Collect Rewards
-          </IonButton>
-        </section>
-      )
-    );
-  }, [isDead]);
+  const map = maps[0];
+  const encounters = map.encounters.map((e) => ({ name: e.name, level: 15 }));
+  console.log(encounters)
+  
   return (
     <IonPage id="tap-page">
       <IonContent fullscreen>
-        <IonProgressBar style={{ height: '10px' }} color="danger" value={percentage}></IonProgressBar>
-        <section style={{ textAlign: 'center' }}>
-          <IonText color="primary">
-            <h1>{name}</h1>
-          </IonText>
-          <IonText color="secondary">
-            <h5>
-              {life}/{maxLife}
-            </h5>
-          </IonText>
-        </section>
-        <section>
-          <IonImg src="/assets/lil_chick.svg" onClick={() => dispatch(tap())} />
-        </section>
-        {collectSection}
+        <Queue encounters={encounters} />
       </IonContent>
       <IonFooter>
         <IonToolbar>
