@@ -6,7 +6,7 @@ const ItemView: React.FC<ItemStack> = (props) => {
   return (
     <IonItem color={color}>
       <IonLabel>{props.item.name}</IonLabel>
-      <IonNote>{props.quantity}</IonNote>
+      <IonNote slot="end">{props.quantity}</IonNote>
     </IonItem>
   );
 };

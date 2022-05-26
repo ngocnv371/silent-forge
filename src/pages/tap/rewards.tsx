@@ -11,7 +11,9 @@ const Rewards: React.FC<{ items: ItemStack[]; onCollect: Function }> = (props) =
       <ItemsList items={props.items} />
       <IonToolbar>
         <IonButtons slot="primary">
-          <IonButton onClick={() => props.onCollect()}>Collect</IonButton>
+          <IonButton color="primary" onClick={() => props.onCollect()}>
+            Collect
+          </IonButton>
         </IonButtons>
       </IonToolbar>
     </IonCard>
