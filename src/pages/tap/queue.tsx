@@ -1,16 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createMonster, generateLoot } from '../../data/monsters';
 import MonsterView from './monster';
 import Atlas from '../../models/atlas';
 import Rewards from './rewards';
 import { useIonRouter } from '@ionic/react';
 import useBag from './useBag';
+import { Character } from '../../models';
 
 const Queue: React.FC<{ encounters: Atlas.EncounterInstance[] }> = ({ encounters }) => {
   const [encounterIndex, setEncounterIndex] = useState(0);
   const [bag, addStacks] = useBag([]);
-  const [monsters] = useState(encounters.map((e) => createMonster(e.name, e.level)));
+  const [monsters, setMonsters] = useState([] as Character[]);
   const router = useIonRouter();
+
+  useEffect(() => {
+    console.log('generate monsters');
+    const m = encounters.map((e) => createMonster(e.name, e.level));
+    console.table(m);
+    setMonsters(m);
+  }, [encounters]);
+
   const showRewards = encounterIndex >= encounters.length;
   console.log(`encounterIndex: ${encounterIndex}`);
 

@@ -15,7 +15,7 @@ const MonsterView: React.FC<{ monster: Character; disabled: boolean; onDead: Fun
       console.log(`${monster.name} is already dead`);
       return;
     }
-    const newLife = life - 10;
+    const newLife = life - 50;
     setLife(newLife);
     if (newLife < 1) {
       console.log(`${monster.name} is slain`);
