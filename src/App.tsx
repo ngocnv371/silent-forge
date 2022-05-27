@@ -21,19 +21,19 @@ import {
   setupIonicReact,
 } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
-import { flame, flashOutline, personCircleOutline, hammer, settings } from 'ionicons/icons';
+import { flame, map, personCircleOutline, hammer, settings } from 'ionicons/icons';
 
 import { IonReactRouter } from '@ionic/react-router';
 import Setting from './pages/setting';
 import Skills from './pages/skills';
 import Status from './pages/status';
-import Tap from './pages/tap';
 import Zones from './pages/zones';
 import Forge from './pages/forge';
 import WikiItems from './pages/wiki/items';
 import WikiModifiers from './pages/wiki/modifiers';
 import WikiMonsters from './pages/wiki/monsters';
 import WikiAtlas from './pages/wiki/atlas';
+import Atlas from './pages/atlas';
 
 setupIonicReact();
 
@@ -61,8 +61,8 @@ const App: React.FC = () => (
           <Route exact path="/wiki/atlas">
             <WikiAtlas />
           </Route>
-          <Route exact path="/tap">
-            <Tap />
+          <Route exact path="/atlas">
+            <Atlas />
           </Route>
           <Route exact path="/forge">
             <Forge />
@@ -87,9 +87,9 @@ const App: React.FC = () => (
             <IonIcon icon={hammer} />
             <IonLabel>Forge</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tap" href="/tap">
-            <IonIcon icon={flashOutline} />
-            <IonLabel>Tap</IonLabel>
+          <IonTabButton tab="atlas" href="/atlas">
+            <IonIcon icon={map} />
+            <IonLabel>Atlas</IonLabel>
           </IonTabButton>
           <IonTabButton tab="setting" href="/setting">
             <IonIcon icon={settings} />
