@@ -11,6 +11,7 @@ namespace Atlas {
     level: number;
   }
   export interface Map {
+    id: string;
     name: string;
     region: string;
     length: [number, number];
@@ -18,6 +19,7 @@ namespace Atlas {
     encounters: Encounter[];
   }
   export interface Region {
+    id: string;
     name: string;
     maps: Map[];
   }

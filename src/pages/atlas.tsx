@@ -21,14 +21,14 @@ import regions from '../data/atlas';
 import Atlas from '../models/atlas';
 
 const segments = regions.map((r) => (
-  <IonSegmentButton key={r.name} value={r.name}>
+  <IonSegmentButton key={r.id} value={r.name}>
     <IonLabel>{r.name}</IonLabel>
   </IonSegmentButton>
 ));
 
 const MapItem: React.FC<{ map: Atlas.Map }> = ({ map }) => {
   return (
-    <IonCard key={map.name} id={`map-${map.name}`}>
+    <IonCard key={map.id} id={`map-${map.id}`} routerLink={`/tap/${map.id}`}>
       <IonCardHeader>
         <IonCardTitle>{map.name}</IonCardTitle>
       </IonCardHeader>
@@ -37,11 +37,11 @@ const MapItem: React.FC<{ map: Atlas.Map }> = ({ map }) => {
 };
 
 const AtlasView: React.FC = () => {
-  const [region, setRegion] = useState(regions[0].name);
+  const [region, setRegion] = useState(regions[0].id);
   const [maps, setMaps] = useState(regions[0].maps);
 
   useEffect(() => {
-    const r = regions.find((r) => r.name === region);
+    const r = regions.find((r) => r.id === region);
     if (!r) {
       console.error(`region '${region}' not found`);
       return;

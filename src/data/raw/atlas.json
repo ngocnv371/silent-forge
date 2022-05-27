@@ -1,8 +1,10 @@
 [
   {
+    "id": "arthan",
     "name": "Arthan",
     "maps": [
       {
+        "id": "undergroundriver",
         "name": "Underground River",
         "length": [2, 6],
         "tags": ["water"],
@@ -14,6 +16,7 @@
         ]
       },
       {
+        "id": "canyon",
         "name": "Canyon",
         "length": [2, 6],
         "tags": ["rock"],
@@ -27,9 +30,11 @@
     ]
   },
   {
+    "id": "cartis",
     "name": "Cartis",
     "maps": [
       {
+        "id": "strand",
         "name": "Strand",
         "tags": ["sand", "water"],
         "length": [2, 6],
@@ -39,6 +44,7 @@
         ]
       },
       {
+        "id": "wasteland",
         "name": "Waste Land",
         "length": [2, 6],
         "tags": ["sand"],

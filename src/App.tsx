@@ -34,6 +34,7 @@ import WikiModifiers from './pages/wiki/modifiers';
 import WikiMonsters from './pages/wiki/monsters';
 import WikiAtlas from './pages/wiki/atlas';
 import Atlas from './pages/atlas';
+import Tap from './pages/tap';
 
 setupIonicReact();
 
@@ -64,6 +65,7 @@ const App: React.FC = () => (
           <Route exact path="/atlas">
             <Atlas />
           </Route>
+          <Route path="/tap/:map" component={Tap}></Route>
           <Route exact path="/forge">
             <Forge />
           </Route>
