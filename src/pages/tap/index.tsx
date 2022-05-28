@@ -14,11 +14,9 @@ import { exit, refresh } from 'ionicons/icons';
 import { reset } from '../../store/slices/tap';
 import { useDispatch } from 'react-redux';
 
-import { useEffect, useState } from 'react';
 import Queue from './queue';
-import { maps } from '../../data/atlas';
 import { RouteComponentProps } from 'react-router';
-import Atlas from '../../models/atlas';
+import useEncounters from './useEncounter';
 
 interface TapPageProps
   extends RouteComponentProps<{
@@ -27,28 +25,7 @@ interface TapPageProps
 
 const Tap: React.FC<TapPageProps> = ({ match }) => {
   const dispatch = useDispatch();
-  const [map, setMap] = useState<Atlas.Map>();
-  const [encounters, setEncounters] = useState([] as Atlas.EncounterInstance[]);
-
-  useEffect(() => {
-    const map = maps.find((m) => m.id === match.params.map);
-    if (!map) {
-      console.error(`map '${match.params.map}' not found`);
-      return;
-    }
-    console.log(`found map`, map);
-    setMap(map);
-  }, [match.params.map]);
-
-  useEffect(() => {
-    if (!map) {
-      return;
-    }
-    const encounters: Atlas.EncounterInstance[] = map.encounters.map((e) => ({ name: e.name, level: 15 }));
-    setEncounters(encounters);
-    console.log(`generated encounters`);
-    console.table(encounters);
-  }, [map]);
+  const encounters = useEncounters(match.params.map);
 
   return (
     <IonPage id="tap-page">
