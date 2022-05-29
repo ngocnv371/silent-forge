@@ -21,7 +21,7 @@ import regions from '../data/atlas';
 import Atlas from '../models/atlas';
 
 const segments = regions.map((r) => (
-  <IonSegmentButton key={r.id} value={r.name}>
+  <IonSegmentButton key={r.id} value={r.id}>
     <IonLabel>{r.name}</IonLabel>
   </IonSegmentButton>
 ));
