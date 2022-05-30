@@ -21,7 +21,7 @@ import {
   setupIonicReact,
 } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
-import { flame, map, personCircleOutline, hammer, settings } from 'ionicons/icons';
+import { flame, map, personCircleOutline, hammer, settings, bag } from 'ionicons/icons';
 
 import { IonReactRouter } from '@ionic/react-router';
 import Setting from './pages/setting';
@@ -35,6 +35,7 @@ import WikiMonsters from './pages/wiki/monsters';
 import WikiAtlas from './pages/wiki/atlas';
 import Atlas from './pages/atlas';
 import Tap from './pages/tap';
+import Inventory from './pages/inventory';
 
 setupIonicReact();
 
@@ -65,6 +66,9 @@ const App: React.FC = () => (
           <Route exact path="/atlas">
             <Atlas />
           </Route>
+          <Route exact path="/inventory">
+            <Inventory />
+          </Route>
           <Route path="/tap/:map" component={Tap}></Route>
           <Route exact path="/forge">
             <Forge />
@@ -92,6 +96,10 @@ const App: React.FC = () => (
           <IonTabButton tab="atlas" href="/atlas">
             <IonIcon icon={map} />
             <IonLabel>Atlas</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="inventory" href="/inventory">
+            <IonIcon icon={bag} />
+            <IonLabel>Inventory</IonLabel>
           </IonTabButton>
           <IonTabButton tab="setting" href="/setting">
             <IonIcon icon={settings} />

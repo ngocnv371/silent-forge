@@ -6,12 +6,15 @@ import Rewards from './rewards';
 import { useIonRouter } from '@ionic/react';
 import useBag from './useBag';
 import { Character } from '../../models';
+import { useDispatch } from 'react-redux';
+import { addStack } from '../../store/slices/inventory';
 
 const Queue: React.FC<{ encounters: Atlas.EncounterInstance[] }> = ({ encounters }) => {
   const [encounterIndex, setEncounterIndex] = useState(0);
   const [bag, addStacks] = useBag([]);
   const [monsters, setMonsters] = useState([] as Character[]);
   const router = useIonRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log('generate monsters');
@@ -32,6 +35,9 @@ const Queue: React.FC<{ encounters: Atlas.EncounterInstance[] }> = ({ encounters
 
   function handleCollect() {
     console.log(`collect rewards`, bag);
+    bag.forEach((stack) => {
+      dispatch(addStack(stack));
+    });
     router.goBack();
   }
 
