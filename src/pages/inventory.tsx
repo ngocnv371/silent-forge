@@ -5,6 +5,7 @@ import {
   IonCard,
   IonCardHeader,
   IonContent,
+  IonFooter,
   IonHeader,
   IonIcon,
   IonItem,
@@ -59,6 +60,14 @@ const Inventory: React.FC = () => {
     selectStack(undefined);
   }
 
+  function handleSelect(stack: ItemStack) {
+    if (selectedStack === stack) {
+      selectStack(undefined);
+    } else {
+      selectStack(stack);
+    }
+  }
+
   return (
     <IonPage id="inventory-page">
       <IonHeader>
@@ -70,11 +79,10 @@ const Inventory: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {selectedStack && <ItemPreview {...selectedStack} onDrop={handleDrop} />}
         <IonList>
           {items &&
             items.map((stack) => (
-              <IonItem key={stack.item.id} onClick={() => selectStack(stack)}>
+              <IonItem key={stack.item.id} onClick={() => handleSelect(stack)}>
                 <IonLabel>{stack.item.name}</IonLabel>
                 {stack.quantity > 1 && <IonNote slot="end">{stack.quantity}</IonNote>}
               </IonItem>
@@ -86,6 +94,7 @@ const Inventory: React.FC = () => {
           )}
         </IonList>
       </IonContent>
+      <IonFooter>{selectedStack && <ItemPreview {...selectedStack} onDrop={handleDrop} />}</IonFooter>
     </IonPage>
   );
 };
