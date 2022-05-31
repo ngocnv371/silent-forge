@@ -17,10 +17,11 @@ import {
 } from '@ionic/react';
 import { hammer, trash } from 'ionicons/icons';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ItemStack } from '../models/item';
+import { removeStack } from '../store/slices/inventory';
 
-const ItemPreview: React.FC<ItemStack> = ({ item, quantity }) => {
+const ItemPreview: React.FC<ItemStack & { onDrop: Function }> = ({ item, quantity, onDrop }) => {
   return (
     <IonCard>
       <IonCardHeader>
@@ -29,7 +30,7 @@ const ItemPreview: React.FC<ItemStack> = ({ item, quantity }) => {
       </IonCardHeader>
       <IonToolbar>
         <IonButtons>
-          <IonButton color="danger">
+          <IonButton color="danger" onClick={() => onDrop()}>
             <IonIcon slot="start" icon={trash} />
             Drop
           </IonButton>
@@ -46,8 +47,17 @@ const ItemPreview: React.FC<ItemStack> = ({ item, quantity }) => {
 };
 
 const Inventory: React.FC = () => {
+  const dispatch = useDispatch();
   const [selectedStack, selectStack] = useState<ItemStack>();
   const items = useSelector((state: any) => state.inventory as ItemStack[]);
+
+  function handleDrop() {
+    if (!selectedStack) {
+      return;
+    }
+    dispatch(removeStack(selectedStack));
+    selectStack(undefined);
+  }
 
   return (
     <IonPage id="inventory-page">
@@ -60,7 +70,7 @@ const Inventory: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {selectedStack && <ItemPreview {...selectedStack} />}
+        {selectedStack && <ItemPreview {...selectedStack} onDrop={handleDrop} />}
         <IonList>
           {items &&
             items.map((stack) => (
