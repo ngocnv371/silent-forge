@@ -1,6 +1,18 @@
 platform :ios, '12.0'
 use_frameworks!
 
+# workaround to get through xcode manual sign in on Azure Pipeline
+# https://stackoverflow.com/questions/58975122/ionic-4-with-capacitor-xcodebuild-fails-with-manual-signing-process
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+      config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+      config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+    end
+  end
+end
+
 # workaround to avoid Xcode caching of Pods that requires
 # Product -> Clean Build Folder after new Cordova plugins installed
 # Requires CocoaPods 1.6 or newer

@@ -1,0 +1,37 @@
+trigger:
+- master
+
+pool:
+  name: "Default"
+
+variables:
+  vmImageName: 'macos-latest'
+  projectName: 'arcadia-ipad'
+  npm_config_cache: $(Build.SourcesDirectory)/arcadia-ipad/node_modules
+  npmCacheKeyPrefix: "ard_npm_cache_key_v2"
+
+stages:
+  - stage: Build
+    displayName: Build Ionic - iOS project
+    jobs:
+      - job: Build_Ionic_iOS_Release
+        variables:
+          - group: ios-release
+          - name: buildConfiguration
+            value: Release
+          - name: environment
+            value: development
+        displayName: Build Release
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - template: build-ios.yml
+            parameters:
+              provisioningProfileName: 'Default Provisioning Profile'
+              provisioningProfileFilePath: 'Default_Provisioning_Profile.mobileprovision'
+              certificateSecureFileName: 'aps_development.p12'
+              certificatePassword: $(CertificatePassword)
+              appDisplayName: '$(DisplayName)'
+              appBundleId: $(BundleID)
+              developmentTeamId: $(DevelopmentTeamId)
+              artifactName: $(ArtifactName)
