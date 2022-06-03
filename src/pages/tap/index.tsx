@@ -11,7 +11,7 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import { exit, refresh } from 'ionicons/icons';
-import { reset } from '../../store/slices/tap';
+import { reset } from '../../store/slices/combat';
 import { useDispatch } from 'react-redux';
 
 import Queue from './queue';

@@ -2,14 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import profile from './slices/profile';
 import status from './slices/status';
 import app from './slices/app';
-import tap from './slices/tap';
+import combat from './slices/combat';
 import forge from './slices/forge';
 import inventory from './slices/inventory';
 
 const store = configureStore({
   reducer: {
     app,
-    tap,
+    combat,
     profile,
     status,
     forge,
