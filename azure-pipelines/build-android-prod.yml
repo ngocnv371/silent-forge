@@ -1,0 +1,44 @@
+trigger:
+- master
+
+variables:
+  vmImageName: 'windows-latest'
+  projectName: 'App'
+  npm_config_cache: $(Build.SourcesDirectory)/app/node_modules
+  npmCacheKeyPrefix: "sf_npm_cache_key_v2"
+
+stages:
+  - stage: Build
+    displayName: Build Ionic - Android projects
+    jobs:
+      # Debug build
+      - job: Build_Ionic_Android_Debug
+        variables:
+          - name: buildConfiguration
+            value: Debug
+          - name: environment
+            value: production
+        displayName: Build Debug
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - template: ionic-android-debug-build.yml
+
+      # Release build
+      - job: Build_Ionic_Android_Release
+        variables:
+          - group: android-release
+          - name: buildConfiguration
+            value: Release
+          - name: environment
+            value: production
+        displayName: Build Release
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - template: ionic-android-release-build.yml
+            parameters:
+              keystoreFileName: 'android-release.keystore'
+              keystorePassword: $(keystorePassword)
+              keyAlias: $(keyAlias)
+              keyPassword: $(keyPassword)

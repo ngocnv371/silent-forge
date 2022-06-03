@@ -1,0 +1,32 @@
+parameters:
+  - name: environment
+    displayName: "Ionic Build $(environment)"
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "14.x"
+    displayName: "Install Node.js"
+
+  - script: npm i -g @ionic/cli
+    displayName: 'Install Ionic CLI'
+  
+  - task: Cache@2
+    displayName: "Cache npm"
+    inputs:
+      key: '"$(npmCacheKeyPrefix)" | "$(Agent.OS)" | $(Build.SourcesDirectory)/$(projectName)/package.json'
+      path: $(npm_config_cache)
+      cacheHitVar: NPM_CACHE_RESTORED
+
+  - script: yarn --cwd ./$(projectName) install --frozen-lockfile
+    condition: ne(variables.NPM_CACHE_RESTORED, 'true')
+    displayName: Install frozen packages
+
+  - powershell: |
+      $env:APP_ENV='$(environment)'
+      echo "Initiate ios build on $env:APP_ENV environment"
+      Invoke-Expression "ren .env.$env:APP_ENV .env.production"
+      ionic cap build ios --no-open --prod
+      npx cap sync ios
+    workingDirectory: $(Build.SourcesDirectory)/$(projectName)
+    displayName: 'Build iOS Project'
