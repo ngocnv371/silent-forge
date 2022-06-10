@@ -15,7 +15,7 @@ function generateByBase(base: string): Item {
 
 export function generateSet(): EquipmentSet {
   return {
-    bodyArmour: generateByBase('Body Armour'),
+    bodyArmour: undefined,
     helmet: generateByBase('Helmet'),
     gloves: generateByBase('Gloves'),
     boots: generateByBase('Boots'),

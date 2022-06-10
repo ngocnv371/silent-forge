@@ -18,10 +18,8 @@ import ItemView from '../components/item-view';
 import { EquipmentSet, EquipmentSlot } from '../models/equipments';
 import { Item } from '../models/item';
 
-const ItemPreview: React.FC<{ item: Item, onDrop: Function }> = ({ item, onDrop }) => {
-  return (
-    <ItemView item={item} />
-  );
+const ItemPreview: React.FC<{ item: Item; onDrop: Function }> = ({ item, onDrop }) => {
+  return <ItemView item={item} />;
 };
 
 const Equipment: React.FC<{ slot: EquipmentSlot; item?: Item; onClick: Function }> = ({ slot, item, onClick }) => {
@@ -70,19 +68,11 @@ const Equipments: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          {set && (
-            <>
-              <Equipment slot='bodyArmour' item={set.bodyArmour} onClick={() => handleSelect(set.bodyArmour)} />
-              <Equipment slot='gloves' item={set.gloves} onClick={() => handleSelect(set.gloves)} />
-              <Equipment slot='boots' item={set.boots} onClick={() => handleSelect(set.boots)} />
-              <Equipment slot='rightRing' item={set.rightRing} onClick={() => handleSelect(set.rightRing)} />
-              <Equipment slot='leftRing' item={set.leftRing} onClick={() => handleSelect(set.leftRing)} />
-              <Equipment slot='amulet' item={set.amulet} onClick={() => handleSelect(set.amulet)} />
-              <Equipment slot='mainHand' item={set.mainHand} onClick={() => handleSelect(set.mainHand)} />
-              <Equipment slot='offHand' item={set.offHand} onClick={() => handleSelect(set.offHand)} />
-              <Equipment slot='helmet' item={set.helmet} onClick={() => handleSelect(set.helmet)} />
-            </>
-          )}
+          {set &&
+            Object.keys(set).map((k) => {
+              const slot = k as EquipmentSlot;
+              return <Equipment key={k} slot={slot} item={set[slot]} onClick={() => handleSelect(set[slot])} />;
+            })}
           {!set && (
             <IonItem>
               <IonLabel>Empty</IonLabel>
