@@ -20,6 +20,7 @@ export interface Modifier extends Weighted {
   name: string;
   type: ModifierType;
   description: string;
+  effect: string;
   tags: string[];
   tiers: ModifierTier[];
 }
@@ -38,6 +39,7 @@ export interface ModifierInstance {
   name: string;
   type: ModifierType;
   description: string;
+  effect: string;
   level: number;
   magnitude: number;
 }

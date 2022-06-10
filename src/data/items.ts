@@ -2,6 +2,7 @@ import { Item, ItemRarity } from '../models/item';
 
 interface RawItem {
   name: string;
+  base?: string;
   tags: string[];
 }
 
@@ -11,7 +12,7 @@ const items = rawItems.map((i) => {
     name: i.name,
     rarity: ItemRarity.Normal,
     modifiers: [],
-    base: '',
+    base: i.base || '',
     id: i.name,
     level: 0,
     tags: i.tags,

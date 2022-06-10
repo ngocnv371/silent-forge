@@ -1,12 +1,12 @@
 import { IonList } from '@ionic/react';
 import { ItemStack } from '../models/item';
-import ItemView from './item-view';
+import ItemStackView from './item-stack-view';
 
 const ItemsList: React.FC<{ items: ItemStack[] }> = ({ items }) => {
   return (
     <IonList>
       {items.map((i, idx) => (
-        <ItemView key={idx} {...i} />
+        <ItemStackView key={idx} {...i} />
       ))}
     </IonList>
   );

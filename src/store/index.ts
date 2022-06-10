@@ -5,6 +5,7 @@ import app from './slices/app';
 import combat from './slices/combat';
 import forge from './slices/forge';
 import inventory from './slices/inventory';
+import equipments from './slices/equipments';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     status,
     forge,
     inventory,
+    equipments,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });

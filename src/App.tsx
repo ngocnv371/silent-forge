@@ -36,6 +36,7 @@ import WikiAtlas from './pages/wiki/atlas';
 import Atlas from './pages/atlas';
 import Tap from './pages/tap';
 import Inventory from './pages/inventory';
+import Equipments from './pages/equipments';
 
 setupIonicReact();
 
@@ -68,6 +69,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/inventory">
             <Inventory />
+          </Route>
+          <Route exact path="/equipments">
+            <Equipments />
           </Route>
           <Route path="/tap/:map" component={Tap}></Route>
           <Route exact path="/forge">

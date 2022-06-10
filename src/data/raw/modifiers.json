@@ -4,6 +4,7 @@
     "type": "Suffix",
     "weight": 400,
     "description": "Adds # to Maximum Life",
+    "effect": "addedMaximumLife",
     "tags": ["life", "armour"],
     "tier": {
       "level": {
@@ -35,6 +36,7 @@
     "type": "Suffix",
     "weight": 400,
     "description": "+# armour",
+    "effect": "addedArmour",
     "tags": ["armour"],
     "tier": {
       "level": {
@@ -66,6 +68,7 @@
     "type": "Suffix",
     "weight": 400,
     "description": "+# evasion",
+    "effect": "addedEvasion",
     "tags": ["armour", "evasion"],
     "tier": {
       "level": {
@@ -98,6 +101,7 @@
     "type": "Suffix",
     "weight": 400,
     "description": "+# energy shield",
+    "effect": "addedEnergyShield",
     "tags": ["armour", "energy shield"],
     "tier": {
       "level": {
@@ -129,6 +133,7 @@
     "type": "Prefix",
     "weight": 400,
     "description": "Adds # to physical damage",
+    "effect": "addedPhysicalDamage",
     "tags": ["physical", "weapon"],
     "tier": {
       "level": {
@@ -160,6 +165,7 @@
     "type": "Prefix",
     "weight": 400,
     "description": "Adds # to fire damage",
+    "effect": "addedFireDamage",
     "tags": ["fire", "weapon"],
     "tier": {
       "level": {
@@ -191,6 +197,7 @@
     "type": "Prefix",
     "weight": 400,
     "description": "Adds # to lightning damage",
+    "effect": "addedLightningDamage",
     "tags": ["lightning", "weapon"],
     "tier": {
       "level": {
@@ -222,6 +229,7 @@
     "type": "Prefix",
     "weight": 400,
     "description": "Adds # to cold damage",
+    "effect": "addedColdDamage",
     "tags": ["cold", "weapon"],
     "tier": {
       "level": {

@@ -9,6 +9,7 @@ interface ModifierDefinition {
   type: 'Prefix' | 'Suffix';
   weight: number;
   description: string;
+  effect: string;
   tags: string[];
   tier: {
     level: Curve;
@@ -36,8 +37,9 @@ function generate(mod: ModifierDefinition): Modifier {
     type: mod.type === 'Prefix' ? ModifierType.Prefix : ModifierType.Suffix,
     weight: mod.weight,
     description: mod.description,
+    effect: mod.effect,
     tags: mod.tags,
-    tiers,
+    tiers: tiers.reverse(),
   };
   console.log(`final mod`, ret);
   console.groupEnd();

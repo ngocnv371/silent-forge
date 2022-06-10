@@ -45,6 +45,16 @@
   { "name": "Seatrout", "tags": ["cold"] },
   { "name": "Weakfish", "tags": ["life", "dexterity"] },
   { "name": "Sheephead", "tags": ["spped", "fire"] },
-  { "name": "Kingfish", "tags": ["life", "energy shield", "physical"] }
+  { "name": "Kingfish", "tags": ["life", "energy shield", "physical"] },
+
+  { "name": "Short Sword", "base": "Sword", "tags": ["weapon", "sword", "physical"] },
+  { "name": "Stout Shield", "base": "Shield", "tags": ["weapon", "shield", "physical"] },
+  { "name": "Iron Mail", "base": "Body Armour", "tags": ["armour", "body armour", "physical"] },
+  { "name": "Hide Gloves", "base": "Gloves", "tags": ["armour", "gloves", "physical"] },
+  { "name": "Iron Greaves", "base": "Boots", "tags": ["armour", "boots", "physical"] },
+  { "name": "Iron Helmet", "base": "Helmet", "tags": ["armour", "helmet", "physical"] },
+  { "name": "Iron Ring", "base": "Ring", "tags": ["armour", "ring", "physical"] },
+  { "name": "Iron Amulet", "base": "Amulet", "tags": ["armour", "amulet", "physical"] },
+  { "name": "Iron Belt", "base": "Belt", "tags": ["armour", "belt", "physical"] }
 
 ]
