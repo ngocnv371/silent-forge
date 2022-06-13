@@ -13,7 +13,7 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ItemView from '../components/item-view';
 import { EquipmentSet, EquipmentSlot } from '../models/equipments';
 import { Item } from '../models/item';
@@ -40,7 +40,6 @@ const Equipment: React.FC<{ slot: EquipmentSlot; item?: Item; onClick: Function 
 };
 
 const Equipments: React.FC = () => {
-  const dispatch = useDispatch();
   const [selectedItem, selectItem] = useState<Item>();
   const set = useSelector((state: any) => state.equipments as EquipmentSet);
 

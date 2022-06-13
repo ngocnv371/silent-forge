@@ -23,6 +23,13 @@ const Setting: React.FC = () => {
           <IonItem routerLink='/wiki/atlas'>
             <IonLabel>Atlas</IonLabel>
           </IonItem>
+          <IonListHeader>More</IonListHeader>
+          <IonItem routerLink='/equipments'>
+            <IonLabel>Equipments</IonLabel>
+          </IonItem>
+          <IonItem routerLink='/inventory'>
+            <IonLabel>Inventory</IonLabel>
+          </IonItem>
         </IonList>
       </IonContent>
     </IonPage>

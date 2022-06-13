@@ -2,6 +2,7 @@ import { IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@
 
 import BasicStats from './basic';
 import Profile from './profile';
+import Modifiers from './modifiers';
 
 const Status: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Status: React.FC = () => {
           <Profile />
           <BasicStats />
         </IonList>
+        <Modifiers />
       </IonContent>
     </IonPage>
   );

@@ -101,10 +101,6 @@ const App: React.FC = () => (
             <IonIcon icon={map} />
             <IonLabel>Atlas</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="inventory" href="/inventory">
-            <IonIcon icon={bag} />
-            <IonLabel>Inventory</IonLabel>
-          </IonTabButton>
           <IonTabButton tab="setting" href="/setting">
             <IonIcon icon={settings} />
             <IonLabel>Setting</IonLabel>
