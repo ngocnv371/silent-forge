@@ -18,8 +18,10 @@ const Queue: React.FC<{ encounters: Atlas.EncounterInstance[] }> = ({ encounters
 
   useEffect(() => {
     console.log('generate monsters');
+    console.time('generate monsters');
     const m = encounters.map((e) => createMonster(e.name, e.level));
     console.table(m);
+    console.timeEnd('generate monsters');
     setMonsters(m);
   }, [encounters]);
 
@@ -34,7 +36,8 @@ const Queue: React.FC<{ encounters: Atlas.EncounterInstance[] }> = ({ encounters
   }
 
   function handleCollect() {
-    console.log(`collect rewards`, bag);
+    console.log(`collect rewards`);
+    console.table(bag);
     bag.forEach((stack) => {
       dispatch(addStack(stack));
     });
