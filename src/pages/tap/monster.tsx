@@ -1,15 +1,15 @@
 import { IonCard, IonCardHeader, IonImg, IonProgressBar, IonTitle } from '@ionic/react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Character } from '../../models';
-import { applyDamage, CharacterCombatStatus, getAttackDamage } from '../../models/combat';
+import { applyDamage, createHit, takeHit } from '../../services/character';
+import useCombatStatus from './useCombatStatus';
 
 const MonsterView: React.FC<{ monster: Character; disabled: boolean; onDead: Function }> = ({
   monster,
   disabled,
   onDead,
 }) => {
-  const combat = useSelector((state: any) => state.combat) as CharacterCombatStatus;
+  const status = useCombatStatus();
   const [life, setLife] = useState(monster.maxLife);
   const percentage = life / monster.maxLife;
   const isDead = life < 1;
@@ -19,10 +19,13 @@ const MonsterView: React.FC<{ monster: Character; disabled: boolean; onDead: Fun
       return;
     }
     console.groupCollapsed('tap monster');
-    const dmg = getAttackDamage(combat);
-    console.log(`damage`, dmg);
+    console.log('status');
+    console.table(status);
+    const hit = createHit(status);
+    console.log(`hit`, hit);
+    const dmg = takeHit({}, hit);
     // FIX: use monster's combat status instead
-    const newLife = applyDamage(dmg, life, combat);
+    const newLife = applyDamage(dmg, life);
     console.log(`life [${life}] -> [${newLife}]`);
     setLife(newLife);
     if (newLife < 1) {

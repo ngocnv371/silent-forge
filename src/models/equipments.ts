@@ -1,4 +1,4 @@
-import { Item } from "./item";
+import { Item } from './item';
 
 export type EquipmentSet = {
   bodyArmour?: Item;
@@ -14,3 +14,19 @@ export type EquipmentSet = {
 };
 
 export type EquipmentSlot = keyof EquipmentSet;
+
+export function toItemArray(set: EquipmentSet): Item[] {
+  const items = [
+    set.amulet,
+    set.belt,
+    set.bodyArmour,
+    set.boots,
+    set.gloves,
+    set.helmet,
+    set.leftRing,
+    set.rightRing,
+    set.mainHand,
+    set.offHand,
+  ];
+  return items.filter(Boolean) as Item[];
+}

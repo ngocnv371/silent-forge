@@ -255,5 +255,69 @@
         }
       ]
     }
+  },
+  {
+    "name": "of Arctic",
+    "type": "Suffix",
+    "weight": 400,
+    "description": "+# cold resistance",
+    "effect": "addedColdResistance",
+    "tags": ["cold", "weapon"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 5,
+          "max": 45,
+          "type": "ease"
+        },
+        {
+          "min": 10,
+          "max": 50,
+          "type": "ease"
+        }
+      ]
+    }
+  },
+  {
+    "name": "of Hell",
+    "type": "Suffix",
+    "weight": 400,
+    "description": "+# fire resistance",
+    "effect": "addedFireResistance",
+    "tags": ["fire", "weapon"],
+    "tier": {
+      "level": {
+        "min": 0,
+        "max": 84,
+        "type": "ease"
+      },
+      "weight": {
+        "min": 50,
+        "max": 5000,
+        "type": "ease"
+      },
+      "magnitudes": [
+        {
+          "min": 5,
+          "max": 45,
+          "type": "ease"
+        },
+        {
+          "min": 10,
+          "max": 50,
+          "type": "ease"
+        }
+      ]
+    }
   }
 ]
